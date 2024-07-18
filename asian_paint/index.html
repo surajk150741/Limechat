@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .chat-container {
+            width: 400px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chat-header {
+            background: #4CAF50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+        .chat-body {
+            padding: 10px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        .chat-footer {
+            padding: 10px;
+            background: #f4f4f4;
+            display: flex;
+        }
+        .chat-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .send-button {
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            Chatbot
+        </div>
+        <div class="chat-body" id="chat-body">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Type a message...">
+            <button class="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const chatInput = document.getElementById('chat-input');
+            const message = chatInput.value;
+            if (!message) return;
+
+            // Display the user's message
+            displayMessage('You', message);
+
+            // Make the API request
+            const xhr = new XMLHttpRequest();
+            const url = `http://localhost:7000/search_report_generation?nlq=${encodeURIComponent(message)}`;
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        var response = xhr.responseText;
+                        displayMessage('Bot', response);
+                    } else {
+                        console.error(`Error: ${xhr.status}`);
+                        displayMessage('Bot', 'Error: Unable to fetch response from the server.');
+                    }
+                }
+            };
+            xhr.onerror = function () {
+                console.error('Request error...');
+                displayMessage('Bot', 'Error: Unable to send request.');
+            };
+            xhr.send();
+
+            // Clear the input field
+            chatInput.value = '';
+        }
+
+        function displayMessage(sender, message) {
+            const chatBody = document.getElementById('chat-body');
+            const messageElement = document.createElement('div');
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatBody.appendChild(messageElement);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+        
+    </script>
+</body>
+</html>

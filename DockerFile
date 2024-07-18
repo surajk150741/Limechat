@@ -1,0 +1,13 @@
+# Use the official ClickHouse image from Docker Hub
+FROM clickhouse/clickhouse-server:23.4.2.11
+
+# Expose ports 8123 and 9000
+EXPOSE 8123
+EXPOSE 9000
+
+# (Optional) Add any additional configuration or setup scripts
+# For example, copying a custom ClickHouse config file
+# COPY my-custom-config.xml /etc/clickhouse-server/config.xml
+
+# Set the entry point to start the ClickHouse server
+CMD ["clickhouse-server"]

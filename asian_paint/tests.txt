@@ -1,0 +1,21 @@
+q1: How many regions are there
+sqlr1: SELECT COUNT(DISTINCT "Region") AS "RegionCount"
+FROM "asian_paints";
+
+q2: How many regions are there between 4th June to 12th June
+sqlr2: SELECT COUNT(DISTINCT "Region") AS region_count FROM asian_paints WHERE "Date" BETWEEN '2024-06-04' AND '2024-06-12'
+
+q3: Get average sales on dates
+sqlr3: SELECT Date, AVG(Sales) AS Average_Sales FROM asian_paints GROUP BY Date;
+result: [('2024-06-04 00:00:00.000000', 705227.1818181818), ('2024-06-05 00:00:00.000000', 1512734.0), ('2024-06-06 00:00:00.000000', 975355.5), ('2024-06-07 00:00:00.000000', 1490613.5), ('2024-06-08 00:00:00.000000', 541208.5), ('2024-06-09 00:00:00.000000', 1731141.0), ('2024-06-10 00:00:00.000000', 973793.0), ('2024-06-11 00:00:00.000000', 1143848.0), ('2024-06-12 00:00:00.000000', 1607257.0), ('2024-06-13 00:00:00.000000', 1230123.5)]
+
+q4: For region 1, get the difference of sales between 4th june and 12th june
+sqlr4: SELECT (SELECT SUM(Sales) FROM asian_paints WHERE Region = 'Region 1' AND Date = '2024-06-12') - (SELECT SUM(Sales) FROM asian_paints WHERE Region = 'Region 1' AND Date = '2024-06-04') AS Sales_Difference;
+result: [(None,)]
+
+q5: For Skue 1, get the difference of sales between 4th june and 12th june
+sqlr5: SELECT (SELECT Sales FROM asian_paints WHERE Skues = 'SKU1' AND Date = '2024-06-12') - (SELECT Sales FROM asian_paints WHERE Skues = 'SKU1' AND Date = '2024-06-04') AS Sales_Difference;
+result: [(None,)]
+
+Follow up q: use previous sql, 
+keep previous sql in memory

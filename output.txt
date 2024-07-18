@@ -1,0 +1,11 @@
+ALTER TABLE `your_table_name` MODIFY COLUMN `id` COMMENT 'ID is a sequentially increasing number. It can uniquely identify an event and is the PRIMARY KEY of the table. ';
+ALTER TABLE `your_table_name` MODIFY COLUMN `name` COMMENT 'Customer Name as automatically assigned in the conversation on the helpdesk';
+ALTER TABLE `your_table_name` MODIFY COLUMN `email` COMMENT 'Email of the customer';
+ALTER TABLE `your_table_name` MODIFY COLUMN `phone_number` COMMENT 'phone number of the customer';
+ALTER TABLE `your_table_name` MODIFY COLUMN `account_id` COMMENT 'Company ID. This is the unique identifier for a company. This ID comes from HelpDesk and is the same as the ID HelpDesk uses for identifying the company';
+ALTER TABLE `your_table_name` MODIFY COLUMN `created_at` COMMENT '(UTC) at which customer details are created at.';
+ALTER TABLE `your_table_name` MODIFY COLUMN `updated_at` COMMENT '(UTC) at which customer details are updated.';
+ALTER TABLE `your_table_name` MODIFY COLUMN `pubsub_token` COMMENT 'Authentication Token';
+ALTER TABLE `your_table_name` MODIFY COLUMN `additional_attributes` COMMENT 'Stores metadata';
+ALTER TABLE `your_table_name` MODIFY COLUMN `identifier` COMMENT ' ';
+ALTER TABLE `your_table_name` MODIFY COLUMN `custom_attributes` COMMENT 'This is used to customise the contact information based on the Client’s preferences. There may be a case where the client is moving their previous customer contacts to our dashboard. They can use custom attributes by customising the api call and storing their data in this column.';

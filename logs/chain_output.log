@@ -1,0 +1,846 @@
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how many people are there
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS total_people FROM contacts[0m
+SQLResult: [33;1m[1;3m[(200,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how many people are there
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how many people are there?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how many tables are there?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how many tables are there?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how many tables are there?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how many tables are there?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how many tables are there?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'your_database_name';[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how many tables are there?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'limechat2';[0m
+SQLResult: [33;1m[1;3m[(5,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+Name all the tables?
+SQLQuery:[32;1m[1;3mSHOW TABLES;[0m
+SQLResult: [33;1m[1;3m[('accounts',), ('contacts',), ('conversations',), ('inboxes',), ('messages',)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+Name all the tables?
+SQLQuery:[32;1m[1;3mSHOW TABLES;[0m
+SQLResult: [33;1m[1;3m[('accounts',), ('contacts',), ('conversations',), ('inboxes',), ('messages',)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+Name all the tables?
+SQLQuery:[32;1m[1;3mSHOW TABLES;[0m
+SQLResult: [33;1m[1;3m[('accounts',), ('contacts',), ('conversations',), ('inboxes',), ('messages',)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers have provided their email?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS total_customers_with_email
+FROM contacts
+WHERE email IS NOT NULL[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers are talking with WOWskin?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = (SELECT id FROM accounts WHERE name = 'WOWskin')[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers are talking with WOWskin?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = (SELECT id FROM accounts WHERE name = 'WOWskin')[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers are talking with WOWskin in last month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = (SELECT id FROM accounts WHERE name = 'WOWskin')
+AND created_at >= DATE_SUB(C[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers are talking with account id 71 in last month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+SQL[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers are talking with the client?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71[0m
+SQLResult: [33;1m[1;3m[(77,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers are talking with the client?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers are talking with the client?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71[0m
+SQLResult: [33;1m[1;3m[(77,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers are talking with the client?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DIST[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers are talking with the client in past one month?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:[32;1m[1;3mSELECT COUNT[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at >= DATE_SUB(NOW(), INTERVAL 1 MONTH[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at >= DATE_SUB(NOW(), INTERVAL 1 WEEK[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one week?
+SQLQuery:
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at >= DATE_SUB(NOW(), INTERVAL 1 WEEK)[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at >= DATE_SUB(NOW(), INTERVAL 1 MONTH)[0m
+SQLResult: [33;1m[1;3m[(2,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at >= DATE_SUB(NOW(), INTERVAL 1 MONTH)[0m
+SQLResult: [33;1m[1;3m[(2,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at >= DATE_SUB(NOW(), INTERVAL 1 DAY)[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at >= DATE_SUB(NOW(), INTERVAL 1 DAY)[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at >= DATE_SUB(NOW(), INTERVAL 1 MONTH)[0m
+SQLResult: [33;1m[1;3m[(1,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1 month') AND (NOW() - INTERVAL '330' MINUTE)[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets generated by users in last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS ticket_count
+FROM conversations
+WHERE created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1 week') AND (NOW() - INTERVAL '330' MINUTE)
+AND status = 0
+AND account_id = 71;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets all agents resolved in last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS resolved_tickets
+FROM conversations
+WHERE status = 1
+AND updated_at BETWEEN (NOW() - INTERVAL '330mins' - INTERVAL '1 week') AND (NOW() - INTERVAL '330mins')[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the Average First response time of the tickets in last week?
+SQLQuery:[32;1m[1;3mSELECT AVG(TIMESTAMPDIFF(MINUTE, conversations.created_at, messages.created_at)) AS avg_first_response_time
+FROM conversations
+JOIN messages ON conversations.id = messages.conversation_id
+WHERE messages.message_type = 0
+AND messages.sender_type = 'Agent'
+AND conversations.created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1 week') AND (NOW() - INTERVAL '330' MINUTE)
+AND conversations.status = 1
+AND conversations.account_id = 71[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many customers talked with client in past one month?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT contact_id) AS total_customers
+FROM conversations
+WHERE account_id = 71
+AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1 month') AND (NOW() - INTERVAL '330' MINUTE)[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets all agents resolved in last week?
+SQLQuery:
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets all agents resolved in last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS resolved_tickets
+FROM conversations
+WHERE status = 1
+AND updated_at BETWEEN (NOW() - INTERVAL '330mins' - INTERVAL '1 week') AND (NOW() - INTERVAL '330mins')[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets all agents resolved in last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS resolved_tickets
+FROM agents
+WHERE is_resolved = 1
+AND updated_at BETWEEN (now() - interval '330mins' - interval '7 days') AND (now() - interval '330mins')[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets all agents resolved in last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS resolved_tickets
+FROM agent_analytics
+WHERE is_resolved = 1
+AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1 week') AND (NOW() - INTERVAL '330' MINUTE)
+AND account_id = 71;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets generated by users in last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS ticket_count
+FROM conversations
+WHERE account_id = 71
+AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1' WEEK) AND (NOW() - INTERVAL '330' MINUTE)
+AND status != 6;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets generated by users in last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS ticket_count
+FROM conversations
+WHERE account_id = 71
+AND status NOT IN (2, 3)
+AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '7' DAY) AND (NOW() - INTERVAL '330' MINUTE)
+AND assignee_id IS NOT NULL;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets generated by users in last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS ticket_count
+FROM conversations
+WHERE account_id = 71
+AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '7' DAY) AND (NOW() - INTERVAL '330' MINUTE)
+AND status != 6;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets generated by users in last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS ticket_count
+FROM conversations
+WHERE account_id = 71
+AND created_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')
+AND status != 6;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets were in an open state in the last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS ticket_count
+FROM conversations
+WHERE account_id = 71
+AND status = 0
+AND created_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many marketing lead tickets were generated in the last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT c.id) AS marketing_lead_tickets
+FROM conversations c
+WHERE c.account_id = 71
+AND c.is_conv_marketing = 1
+AND c.created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1 week') AND (NOW() - INTERVAL '330' MINUTE)[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets were resolved in the last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS resolved_tickets
+FROM conversations
+WHERE status = 1
+AND updated_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')
+AND account_id = 71;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets were closed in the last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS closed_tickets
+FROM conversations
+WHERE status = 3
+AND updated_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')
+AND account_id = 71;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets were put in follow-up state in the last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS ticket_count
+FROM conversations
+WHERE status = 4
+AND updated_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')
+AND account_id = 71;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets were resolved by Abdul Rahman in the last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS resolved_tickets
+FROM conversations
+WHERE assignee_id = (SELECT id FROM accounts WHERE name = 'Abdul Rahman')
+AND status = 1
+AND updated_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1' WEEK) AND (NOW() - INTERVAL '330' MINUTE)
+AND account_id = 71;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the status of the tickets assigned to Abdul Rahman in the last week?
+SQLQuery:[32;1m[1;3mSELECT c.status
+FROM conversations c
+JOIN agent_analytics aa ON c.id = aa.conversation_id
+WHERE aa.assignee_id = 2747
+AND c.updated_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')
+AND c.status NOT IN (
+    SELECT status
+    FROM generate_series(1, 1389) AS status
+)[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets were handed off to agents on 10th October?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS ticket_count
+FROM agent_analytics aa
+JOIN conversations c ON aa.conversation_id = c.id
+WHERE DATE(aa.created_at) = '2022-10-10'
+AND c.account_id = 71;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets consists of the abandoned_checkout tag?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT c.id) AS ticket_count
+FROM conversations c
+JOIN messages m ON c.id = m.conversation_id
+WHERE c.account_id = 71
+AND m.content LIKE '%abandoned_checkout%'[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets belong to WhatsApp Support inbox?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) 
+FROM conversations 
+WHERE inbox_id IN (SELECT id FROM inboxes WHERE name = 'WhatsApp Support') 
+AND account_id = 71;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the average FRT (First response time) across my all agents?
+SQLQuery:[32;1m[1;3mSELECT AVG(agent_frt) AS average_frt
+FROM agent_analytics
+WHERE account_id = 71[0m
+SQLResult: [33;1m[1;3m[(0.03999999910593033,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the average resolution time across my all agents?
+SQLQuery:[32;1m[1;3mSELECT AVG(agent_resolution_time) AS average_resolution_time
+FROM agent_analytics
+WHERE account_id = 71[0m
+SQLResult: [33;1m[1;3m[(0.03999999910593033,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the average Wait time across my all agents?
+SQLQuery:[32;1m[1;3mSELECT AVG(average_agent_wait_time) AS average_wait_time
+FROM agent_analytics
+WHERE account_id = 71[0m
+SQLResult: [33;1m[1;3m[(0.03999999910593033,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+Which agent has the best FRT?
+SQLQuery:[32;1m[1;3mSELECT assignee_id, AVG(agent_frt) AS avg_frt
+FROM agent_analytics
+WHERE account_id = 71
+GROUP BY assignee_id
+ORDER BY avg_frt ASC
+LIMIT 1;[0m
+SQLResult: [33;1m[1;3m[(10287, 0.03999999910593033)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+Who are top three performing agents considering FRT?
+SQLQuery:[32;1m[1;3mSELECT assignee_id, AVG(agent_frt) AS avg_frt
+FROM agent_analytics
+WHERE account_id = 71
+GROUP BY assignee_id
+ORDER BY avg_frt ASC
+LIMIT 3;[0m
+SQLResult: [33;1m[1;3m[(10287, 0.03999999910593033)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+On which date was my FRT the highest?
+SQLQuery:[32;1m[1;3mSELECT DATE(created_at) AS frt_date, MAX(agent_frt) AS highest_frt
+FROM agent_analytics
+WHERE account_id = 71
+GROUP BY frt_date
+ORDER BY highest_frt DESC
+LIMIT 1;[0m
+SQLResult: [33;1m[1;3m[(datetime.date(2023, 1, 7), 0.04)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+On which datys of the week is my ticket volume highest?
+SQLQuery:[32;1m[1;3mSELECT EXTRACT(DOW FROM created_at) AS day_of_week, COUNT(*) AS ticket_volume
+FROM conversations
+WHERE account_id = 71
+GROUP BY day_of_week
+ORDER BY ticket_volume DESC
+LIMIT 5;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+Who has a better resolution time between Mariyam and John?
+SQLQuery:[32;1m[1;3mSELECT 
+    AVG(agent_resolution_time) AS resolution_time,
+    CASE 
+        WHEN assignee_id = 1 THEN 'Mariyam'
+        WHEN assignee_id = 2 THEN 'John'
+    END AS agent_name
+FROM 
+    agent_analytics
+WHERE 
+    account_id = 71
+    AND assignee_id IN (1, 2)
+GROUP BY 
+    assignee_id
+ORDER BY 
+    resolution_time ASC
+LIMIT 1;[0m
+SQLResult: [33;1m[1;3m[0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the total number of messages sent by all agents?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS total_messages
+FROM messages
+WHERE sender_type = 'User'
+AND account_id = 71;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the total number of messages sent by Adbul Raheman?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS total_messages
+FROM messages
+WHERE sender_type = 'User'
+AND sender_id = (
+    SELECT id
+    FROM contacts
+    WHERE name = 'Adbul Raheman'
+    AND account_id = 71
+)[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the average number of messgaes being sent by my all agents?
+SQLQuery:[32;1m[1;3mSELECT AVG(total_messages) AS average_messages
+FROM (
+    SELECT COUNT(*) AS total_messages
+    FROM messages
+    WHERE sender_type = 'User'
+    GROUP BY sender_id
+) AS subquery
+WHERE subquery.sender_id IN (
+    SELECT id
+    FROM accounts
+    WHERE id = 71
+)[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+Who has sent more number of messages between Mariyam and John?
+SQLQuery:[32;1m[1;3mSELECT sender_id, COUNT(*) AS message_count
+FROM messages
+WHERE sender_id IN (
+    SELECT id
+    FROM contacts
+    WHERE name IN ('Mariyam', 'John')
+)
+GROUP BY sender_id
+ORDER BY message_count DESC
+LIMIT 1;[0m
+SQLResult: [33;1m[1;3m[0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many tickets Abdul Raheman has reoslved between 10AM to 2PM?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS resolved_tickets
+FROM conversations c
+JOIN agent_analytics aa ON c.id = aa.conversation_id
+JOIN accounts a ON c.account_id = a.id
+JOIN contacts ct ON c.contact_id = ct.id
+WHERE aa.is_resolved = 1
+AND aa.resolved_by = 'user'
+AND aa.agent_resolution_time BETWEEN (now() - interval '330mins' - interval '1 day') AND (now() - interval '330mins')
+AND ct.name = 'Abdul Raheman'
+AND EXTRACT(HOUR FROM aa.last_resolution_time) >= 10
+AND EXTRACT(HOUR FROM aa.last_resolution_time) <= 14
+AND a.id = 71;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+When were the least number of tickets resolved during the office hours on 10th Oct?
+SQLQuery:[32;1m[1;3mSELECT DATE_TRUNC('hour', messages.updated_at) AS resolved_hour, COUNT(*) AS resolved_tickets
+FROM messages
+JOIN conversations ON messages.conversation_id = conversations.id
+WHERE conversations.status = 1
+AND messages.updated_at >= '2023-10-10 09:00:00' AND messages.updated_at < '2023-10-10 17:00:00'
+AND EXTRACT(DOW FROM messages.updated_at) IN (1, 2, 3, 4, 5)
+AND messages.sender_type = 'User'
+GROUP BY resolved_hour
+ORDER BY resolved_tickets ASC
+LIMIT 1;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How is the average FRT this week, compared to last week?
+SQLQuery:[32;1m[1;3mSELECT AVG(agent_frt) AS average_frt
+FROM agent_analytics
+WHERE account_id = 71
+AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1' WEEK) AND (NOW() - INTERVAL '330' MINUTE)[0m
+SQLResult: [33;1m[1;3m[(None,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the breakdown of the status of the tickets assigned to my agents in the last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS count, status
+FROM conversations
+WHERE assignee_id IS NOT NULL
+AND account_id = 71
+AND updated_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1 week') AND (NOW() - INTERVAL '330' MINUTE)
+GROUP BY status
+ORDER BY count DESC;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the breakdown of the status of the tickets assigned to Abdul Raheman in the last week?
+SQLQuery:[32;1m[1;3mSELECT status, COUNT(*) AS ticket_count
+FROM conversations
+WHERE assignee_id = (SELECT id FROM accounts WHERE name = 'Abdul Raheman')
+AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1' WEEK) AND (NOW() - INTERVAL '330' MINUTE)
+GROUP BY status;[0m
+SQLResult: [33;1m[1;3m[0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many bot tickets were generated in the last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS bot_tickets_count
+FROM conversations
+WHERE account_id = 71
+AND status = 2
+AND created_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What was the bot automation percentage last week?
+SQLQuery:[32;1m[1;3mSELECT 
+    COUNT(DISTINCT conversation_id) AS total_conversations,
+    COUNT(DISTINCT CASE WHEN message_type = 2 THEN conversation_id END) AS bot_conversations,
+    (COUNT(DISTINCT CASE WHEN message_type = 2 THEN conversation_id END) / COUNT(DISTINCT conversation_id)) * 100 AS bot_automation_percentage
+FROM 
+    messages
+WHERE 
+    created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1' WEEK) AND (NOW() - INTERVAL '330' MINUTE)
+    AND account_id = 71
+    AND sender_type = 'AgentBot'[0m
+SQLResult: [33;1m[1;3m[(0, 0, None)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What was the bot resoltuion time last week?
+SQLQuery:[32;1m[1;3mSELECT AVG(agent_resolution_time) AS bot_resolution_time
+FROM agent_analytics
+WHERE account_id = 71
+AND agent_resolution_time > 0
+AND created_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')
+AND is_auto_resolved = 1[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+how is the automation percentage today compatred to yesterday? 
+SQLQuery:[32;1m[1;3mSELECT 
+    (SELECT COUNT(*) FROM messages WHERE account_id = 71 AND message_type = 8 AND DATE(created_at) = CURRENT_DATE) AS today_automation_count,
+    (SELECT COUNT(*) FROM messages WHERE account_id = 71 AND message_type = 8 AND DATE(created_at) = CURRENT_DATE - INTERVAL '1 day') AS yesterday_automation_count[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many users have triggered the intent cancel order? 
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT sender_id) AS total_users
+FROM messages
+WHERE content LIKE '%cancel order%'
+AND account_id = 71;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many users have triggered the intent Talk to Agent?
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT sender_id) AS total_users
+FROM messages
+WHERE content LIKE '%Talk to Agent%'
+AND account_id = 71;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many CSAT responses we got in the last week?
+SQLQuery:[32;1m[1;3mSELECT COUNT(*) AS csat_responses
+FROM messages
+WHERE message_type = 11
+AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1' WEEK) AND (NOW() - INTERVAL '330' MINUTE)
+AND account_id = 71;[0m
+SQLResult: [33;1m[1;3m[(0,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the avg CSAT reading?
+SQLQuery:[32;1m[1;3mSELECT AVG(content_type) AS avg_csat_reading
+FROM messages
+WHERE account_id = 71
+AND content_type = 11;[0m
+SQLResult: [33;1m[1;3m[(None,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+Which agent has the best CSAT in the last month?
+SQLQuery:[32;1m[1;3mSELECT assignee_id, AVG(content_type) AS csat_score
+FROM agent_analytics
+WHERE created_at BETWEEN (now() - interval '330mins' - interval '1 month') AND (now() - interval '330mins')
+GROUP BY assignee_id
+ORDER BY csat_score DESC
+LIMIT 1;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What was the response split of the CSAT repsonses last week?
+SQLQuery:[32;1m[1;3mSELECT 
+    COUNT(CASE WHEN content = '1' THEN 1 END) AS very_dissatisfied,
+    COUNT(CASE WHEN content = '2' THEN 1 END) AS dissatisfied,
+    COUNT(CASE WHEN content = '3' THEN 1 END) AS neutral,
+    COUNT(CASE WHEN content = '4' THEN 1 END) AS satisfied,
+    COUNT(CASE WHEN content = '5' THEN 1 END) AS very_satisfied
+FROM 
+    messages
+WHERE 
+    message_type = 11
+    AND created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1' WEEK) AND (NOW() - INTERVAL '330' MINUTE)
+    AND account_id = 71;[0m
+SQLResult: [33;1m[1;3m[(0, 0, 0, 0, 0)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the top comment recieved in the CSAT response?
+SQLQuery:[32;1m[1;3mSELECT content
+FROM messages
+WHERE message_type = 11
+AND account_id = 71
+ORDER BY created_at DESC
+LIMIT 1;[0m
+SQLResult: [33;1m[1;3m[0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How much bot revenue was generated in the last week?
+SQLQuery:[32;1m[1;3mSELECT SUM(messages.content_type) AS bot_revenue
+FROM messages
+JOIN conversations ON messages.conversation_id = conversations.id
+WHERE conversations.account_id = 71
+AND messages.created_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')
+AND messages.sender_type = 'AgentBot'
+AND messages.content_type = 5[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How much was the toal outbound revenue was generated in the last week?
+SQLQuery:[32;1m[1;3mSELECT SUM(messages.content) AS total_outbound_revenue
+FROM messages
+JOIN conversations ON messages.conversation_id = conversations.id
+WHERE conversations.status = 3
+AND conversations.created_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')
+AND messages.message_type = 1
+AND messages.sender_type = 'Outbound'
+AND messages.status = 2
+AND messages.content_type = 14
+AND messages.content IS NOT NULL
+AND messages.content != ''
+AND conversations.account_id = 71;[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How much toal influenced revenue was generated in the last week?
+SQLQuery:[32;1m[1;3mSELECT SUM(revenue) AS total_influenced_revenue
+FROM (
+    SELECT SUM(m.revenue) AS revenue
+    FROM messages m
+    INNER JOIN conversations c ON m.conversation_id = c.id
+    WHERE c.account_id = 71
+    AND m.created_at BETWEEN (now() - interval '330mins' - interval '1 week') AND (now() - interval '330mins')
+    GROUP BY c.id
+) AS subquery[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What are the top 5 products sold on bot last month? 
+SQLQuery:[32;1m[1;3mSELECT m.content, COUNT(*) AS total_sales
+FROM messages m
+JOIN conversations c ON m.conversation_id = c.id
+JOIN inboxes i ON c.inbox_id = i.id
+WHERE m.message_type = 14
+AND c.created_at BETWEEN (NOW() - INTERVAL '330' MINUTE - INTERVAL '1' MONTH) AND (NOW() - INTERVAL '330' MINUTE)
+AND i.account_id = 71
+GROUP BY m.content
+ORDER BY total_sales DESC
+LIMIT 5;[0m
+SQLResult: [33;1m[1;3m[0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+How many total orders were placed through bot last month? 
+SQLQuery:[32;1m[1;3mSELECT COUNT(DISTINCT m.conversation_id) AS total_orders
+FROM messages m
+JOIN conversations c ON m.conversation_id = c.id
+WHERE c.account_id = 71
+AND m.message_type = 8
+AND m.created_at BETWEEN (now() - interval '330mins' - interval '1 month') AND (now() - interval '330mins')[0m
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the account id of client "Traya"?
+SQLQuery:[32;1m[1;3mSELECT id
+FROM accounts
+WHERE name = 'Traya';[0m
+SQLResult: [33;1m[1;3m[(73,)][0m
+[1m> Finished chain.[0m
+
+
+[1m> Entering new SQLDatabaseChain chain...[0m
+What is the account id of client "Traya"?
+SQLQuery:[32;1m[1;3mSELECT id
+FROM accounts
+WHERE name = 'Traya';[0m
+SQLResult: [33;1m[1;3m[(73,)][0m
+[1m> Finished chain.[0m
