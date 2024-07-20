@@ -21,8 +21,8 @@ rid = '1223456'
 email = 'surajk150741@gmail.com'
 search_core = search_core(query=query,rid=rid,email=email)
 
-out = search_core.playbook_tool(query=query)
-print('SQLQuery:',out)
+# out = search_core.playbook_tool(query=query)
+# print('SQLQuery:',out)
 
 # out = search_core.database_tool(query=query)
 # print('Result:',out)
@@ -34,20 +34,20 @@ print('SQLQuery:',out)
 #     print("serving at port", PORT)
 #     httpd.serve_forever()
 
-# llm = ChatOpenAI(
-#     model="gpt-4o",
-#     temperature=0
-# )
+llm = ChatOpenAI(
+    model="gpt-4o",
+    temperature=0
+)
 
-# @app.get('/search_report_generation')
-# def report_generation(nlq: str):
-#     time_s=time.time()
-#     final_output = "it's working"
-#     return final_output
-# templates = Jinja2Templates(directory="C:/Users/suraj/OneDrive/Desktop/Personal/bhole/gen-AI/limechat")
-# @app.get("/", response_class=HTMLResponse)
-# async def read_root(request: Request):
-#     # Render the HTML template
-#     return templates.TemplateResponse("index.html", {"request": request})
-# if __name__=='__main__':
-#     uvicorn.run("api_main:app", host='localhost', port=7000, reload=False, workers=1)
+@app.get('/search_report_generation')
+def report_generation(nlq: str):
+    time_s=time.time()
+    final_output = "it's working"
+    return final_output
+templates = Jinja2Templates(directory="C:/Users/suraj/OneDrive/Desktop/Personal/bhole/gen-AI/limechat")
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    # Render the HTML template
+    return templates.TemplateResponse("index.html", {"request": request})
+if __name__=='__main__':
+    uvicorn.run("api_main:app", host='localhost', port=7000, reload=False, workers=1)

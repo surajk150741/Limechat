@@ -178,7 +178,7 @@ def execute(query: str,rid:str,email:str):
 if __name__=="__main__":
     data={
     "query": "How many tickets were in an open state in the last 2 week?",
-    "rid": "12345",
+    "rid": "12346",
     "email":"surajk150741@gmail.com"
 }
 
