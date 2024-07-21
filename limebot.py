@@ -140,9 +140,9 @@ class search_core:
             'Platbook_Tool': self.cb_playbook,
             'database_tool': self.cb_db
         }
-        print('jadui',self.playbook_output)
+        print('playbook_test',self.playbook_output)
         if self.playbook_output != 'null':
-            print('jadui')
+            print('playbook_test2')
             memo_content= self.playbook_output
             memory.save_context({"input": query}, {"output": memo_content})
         if self.sql != 'null':
@@ -157,31 +157,31 @@ class search_core:
 
         return final_response
 
-def execute(query: str,rid:str,email:str):
-    """
-    Execute the search operation with error handling.
+# def execute(query: str,rid:str,email:str):
+#     """
+#     Execute the search operation with error handling.
 
-    Args:
-        query (str): The user query.
+#     Args:
+#         query (str): The user query.
 
-    Returns:
-        dict: The search output.
-    """
-    search=search_core(query,rid,email)
-    # ans2 = search.playbook_tool(query)
-    ans = search.execute(query)
-    return ans
-    # except Exception as e:
-    #     print({'function_name': 'execute', 'error_message': f"An error occurred during execute: {e}"})
-    #     return {'error': str(e)}
+#     Returns:
+#         dict: The search output.
+#     """
+#     search=search_core(query,rid,email)
+#     # ans2 = search.playbook_tool(query)
+#     ans = search.execute(query)
+#     return ans
+#     # except Exception as e:
+#     #     print({'function_name': 'execute', 'error_message': f"An error occurred during execute: {e}"})
+#     #     return {'error': str(e)}
 
-if __name__=="__main__":
-    data={
-    "query": "How many tickets were in an open state in the last 2 week?",
-    "rid": "12346",
-    "email":"surajk150741@gmail.com"
-}
+# if __name__=="__main__":
+#     data={
+#     "query": "How many tickets were in an open state in the last 2 week?",
+#     "rid": "12347",
+#     "email":"surajk150741@gmail.com"
+# }
 
-    out=execute(**data)
-    #print(json.dumps(out, indent=4))
-    print(out)
+    # out=execute(**data)
+    # #print(json.dumps(out, indent=4))
+    # print('loo',out)

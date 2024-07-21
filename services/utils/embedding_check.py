@@ -9,7 +9,7 @@ from chromadb.utils import embedding_functions
 openai_ef = embedding_functions.OpenAIEmbeddingFunction(
     model_name="text-embedding-ada-002"
 )
-
+print('hey')
 # # Define the directory for the database
 # db_directory = 'path_to_your_database_directory'
 
