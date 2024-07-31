@@ -30,12 +30,9 @@ import os
 
 system_prompt="""
 You are helpful conversational assistant for helping Limebot platform regarding following tasks:
-- For inquiries regarding the Limebot playbook, including the New Users Guide, Ambition & Approach, limebot tools, how it can be upgraded, table information etc(to be added)
 - To explore data related to all the conversations of customers with clients, inbox information about each accounts/clients, the database_tool is to be used.
 """
 
-class playbook_query(BaseModel):
-    query: str = Field(...,description="The user query related to playbook")
 class database_query(BaseModel):
     query: str = Field(...,description="The user query regarding database related information")
 
@@ -63,15 +60,6 @@ class search_core:
         self.playbook_output, self.cb_playbook, self.time_playbook='null',{},0
         self.sql, self.cb_db, self.time_db= 'null',{},0
         
-    def playbook_tool(self,query: str)->str:
-        """
-        The playbook_tool provides comprehensive guidance of a relational database having 6 tables, tables descriptions, columns and columns description, any primary or foreign key present. 
-        It generates SQL queries ranging from simple to complex SQL queries using the information provided for the company database Analysis.
-        """
-        # self.playbook_output, self.cb_playbook, self.time_playbook= docs_qa(question=query)
-        self.playbook_output, self.cb_playbook, self.time_playbook= docs_qa_sql(question=query)
-        return self.playbook_output
-    
     def database_tool(self, query: str)->str:
         """
         To explore data related to all the conversations of customers with clients, inbox information about each accounts/clients, the database_tool is to be used.
@@ -79,7 +67,7 @@ class search_core:
         """
         # self.generate_sql, self.cb_db, self.time_db=generate_sql_from_db(query)
         self.generate_sql=generate_sql_from_db(query)
-        self.sql=self.generate_sql[1]
+        self.sql=self.generate_sql[0]
         
         return self.generate_sql[0]
     
@@ -102,15 +90,6 @@ class search_core:
         )
         
         tools = [
-            Tool(
-                name="playbook_tool",
-                args_schema=playbook_query,
-                description="""
-        The playbook_tool provides comprehensive guidance of a relational database having 6 tables, tables descriptions, columns and columns description, any primary or foreign key present. 
-        It generates SQL queries ranging from simple to complex SQL queries using the information provided for the company database Analysis.
-        """,
-                func=self.playbook_tool
-            ),
             Tool(
                 name="database_tool",
                 args_schema=database_query,
@@ -140,18 +119,12 @@ class search_core:
             'Platbook_Tool': self.cb_playbook,
             'database_tool': self.cb_db
         }
-        print('playbook_test',self.playbook_output)
-        if self.playbook_output != 'null':
-            print('playbook_test2')
-            memo_content= self.playbook_output
-            memory.save_context({"input": query}, {"output": memo_content})
         if self.sql != 'null':
             print('jadoo')
-            memo_content= json.dumps(self.generate_sql)
+            memo_content= json.dumps(self.generate_sql[0])
             memory.save_context({"input": query}, {"output": memo_content})
 
-        final_response={'playbook_output':self.playbook_output,
-                        'SQL': self.sql,
+        final_response={'SQL': self.sql,
                         'llm_generate_output': output['output']}
         
 
@@ -168,7 +141,7 @@ def execute(query: str,rid:str,email:str):
         dict: The search output.
     """
     search=search_core(query,rid,email)
-    # ans2 = search.playbook_tool(query)
+    # ans = search.database_tool(query)
     ans = search.execute(query)
     return ans
     # except Exception as e:
@@ -177,8 +150,8 @@ def execute(query: str,rid:str,email:str):
 
 if __name__=="__main__":
     data={
-    "query": "How many tickets were handed off to agents on 10th October?",
-    "rid": "12354",
+    "query": "And what about 12th October?",
+    "rid": "12374",
     "email":"surajk150741@gmail.com"
 }
 

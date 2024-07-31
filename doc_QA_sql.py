@@ -49,18 +49,16 @@ def docs_qa_sql(question:str,llm=llm):
     qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=multi_query_retriever ,verbose=True)#, callbacks=[handler])
     #configure the system prompt for retrive context info
     qa.combine_documents_chain.llm_chain.prompt.messages[0].prompt.template="""
-You are a mysql expert. Given an input question, create a syntactically correct mysql query to run as answer to the user's question.
+You are a mysql expert. Given an input question, create a syntactically correct mysql query.
 Use the following format:
 
-Question: "Question here"
 SQLQuery: "SQL Query to run"
 Use the following pieces of context to genarate the sql query as answer to the user's question.
-If you unable to generate the sql query, just say that you don't know, don't send any random sql query as an answer.
 ----------------------------------------------------------------
 {context}
 ----------------------------------------------------------------
-
-The user's question that you have to answer from the above pieces of context is:
+If you unable to generate the sql query, just say that you don't know, don't send any random sql query as an answer.
+The user's question that you have to convert to SQL query from the above pieces of context is:
 """
 
     with get_openai_callback() as cb:

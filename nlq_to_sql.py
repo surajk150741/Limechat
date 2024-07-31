@@ -74,14 +74,13 @@ Below are a number of examples of questions and their corresponding SQL queries.
     """
 
     suffix = """
-NOTE: In case of date filters present in query, use the default python timestamp datetime64[ns] format for these date values to , e.g. '2024-06-04 00:00:00.000000'.
 Return only SQL query, nothing else.
 
 Question: ```{input}```,
 SQL Query: 
     """
     prompt = FewShotPromptTemplate(
-        examples=examples[:10],
+        examples=examples[:12],
         example_prompt=example_prompt,
         prefix=prefix,
         suffix=suffix,
@@ -96,6 +95,7 @@ SQL Query:
     sql = sql.replace("```sql\n",'')
     sql = sql.replace("```SQL",'')
     sql = sql.replace("\n```",'')
+    sql = sql.replace("```",'')
     sql = sql.replace("\n","")
     # print('yeeiis',sql)
     out=f"""
@@ -107,6 +107,6 @@ SQL Query:
 
 if __name__=='__main__':
     
-    query = "How many tickets were in an open state in the last 2 week?"
+    query = "How many tickets were handed off to agents on 10th October?"
     out=generate_sql_from_db(query)
     print('out',out[0])
